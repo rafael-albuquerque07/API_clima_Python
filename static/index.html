@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicativo do Tempo com IA</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h1>WeatherAI</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#current" class="nav-link active">Atual</a>
+                    <a href="#forecast" class="nav-link">Previsão</a>
+                    <a href="#cities" class="nav-link">Cidades</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="citySearch" placeholder="Digite o nome da cidade..." class="search-input">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button id="locationBtn" class="location-btn" title="Usar minha localização">
+                        <i class="fas fa-location-arrow"></i>
+                    </button>
+                </div>
+                <div id="searchResults" class="search-results"></div>
+            </section>
+
+            <!-- Current Weather Section -->
+            <section id="current" class="weather-section">
+                <div class="weather-card main-weather">
+                    <div class="weather-header">
+                        <h2 class="section-title">Tempo Atual</h2>
+                        <div class="last-updated">
+                            <i class="fas fa-clock"></i>
+                            <span id="lastUpdated">Carregando...</span>
+                        </div>
+                    </div>
+                    
+                    <div id="currentWeatherContent" class="weather-content">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>Carregando dados meteorológicos...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forecast Section -->
+            <section id="forecast" class="weather-section">
+                <div class="weather-card">
+                    <div class="weather-header">
+                        <h2 class="section-title">Previsão dos Próximos Dias</h2>
+                        <div class="forecast-controls">
+                            <button id="dailyBtn" class="forecast-btn active">Diária</button>
+                            <button id="hourlyBtn" class="forecast-btn">Horária</button>
+                        </div>
+                    </div>
+                    
+                    <div id="forecastContent" class="forecast-content">
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>Carregando previsão...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Saved Cities Section -->
+            <section id="cities" class="weather-section">
+                <div class="weather-card">
+                    <div class="weather-header">
+                        <h2 class="section-title">Cidades Salvas</h2>
+                        <button id="clearCitiesBtn" class="clear-btn">
+                            <i class="fas fa-trash"></i>
+                            Limpar
+                        </button>
+                    </div>
+                    
+                    <div id="savedCitiesContent" class="saved-cities-content">
+                        <div class="empty-state">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Nenhuma cidade salva ainda</p>
+                            <small>Pesquise por uma cidade e clique no ícone de favorito para salvá-la</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 WeatherAI - Aplicativo do Tempo com IA</p>
+                    <p>Dados meteorológicos fornecidos por <a href="https://open-meteo.com/" target="_blank">Open-Meteo</a></p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Sobre</a>
+                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Erro</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">Ocorreu um erro inesperado.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="errorOkBtn" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sucesso</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="successMessage">Operação realizada com sucesso!</p>
+            </div>
+            <div class="modal-footer">
+                <button id="successOkBtn" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
+
